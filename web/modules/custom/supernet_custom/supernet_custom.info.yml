@@ -1,0 +1,7 @@
+name: 'SuperNet Custom Tweaks'
+type: module
+description: 'Custom changes for supernet module'
+
+core_version_requirement: ^8 || ^9
+dependencies:
+  - views

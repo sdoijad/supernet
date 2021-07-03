@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * @file
+ * Contains civicrm_tweaks.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function supernet_custom_views_pre_render(ViewExecutable $view){
+  if ($view->id() == 'customer_billing_cycle' && $view->current_display == 'page_1') {
+
+    foreach ($view->result as $i=> $value) {
+      // Initial Join Date of customer
+      $joining_date   = $value->_entity->get('field_internet_start_date')->value;
+      $joining_day    = date("d", strtotime('+1 month', strtotime($joining_date)));
+
+      // Plan Expired in current month
+      $current_day          = $joining_day. '-' . date('F'). '-' . date('Y');
+
+      // Reminder of Plan Expired in current month
+      $current_expired_date = date("d, F Y", strtotime($current_day));
+      $current_expired_reminder_date  = date("d, F Y", strtotime('-3 day', strtotime($current_day)));
+
+      // Set the date to Views Fields
+      $value->_entity->set('field_due_date', strtotime($current_day));
+      $value->_entity->set('field_reminder_date', strtotime('-3 day', strtotime($current_day)));
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function supernet_custom_preprocess_views_view_table(&$variables){
+  $view = $variables['view'];
+  if ($view->id() == 'customer_billing_cycle' && $view->current_display == 'page_1') {
+
+    $rows = $variables['rows'];
+
+    foreach ($rows as $id => $row) {
+      $custom_row_class = 'sachin-custom';
+      $variables['rows'][$id]['attributes']->addClass($custom_row_class);
+    }
+  }
+}
+
+function theme_name_preprocess_maintenance_page(&$variables) {
+  $variables['#attached']['library'][] = 'theme_name/custom-library';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function supernet_custom_theme() {
+  return [
+    'node__customer' => [
+      'template' => 'node--customer',
+      'base hook' => 'node'
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK()
+ */
+function supernet_custom_preprocess_node(&$variables) {
+  $variables['#attached']['library'][] = 'bartik/print-styling';
+  $variables['payment_mode'] = $variables['content']['field_payment_mode'][0]['#markup'];
+  //$variables['data_plan'] = $variables['content']['field_choose_data_plan'][0]['#markup'];
+
+}
