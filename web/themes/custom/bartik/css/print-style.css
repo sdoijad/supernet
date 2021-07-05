@@ -679,3 +679,8 @@ address {
   max-width: 41.666667%;
   display:inline-block;
 }
+
+.currency {
+  width:8px;
+  margin-top: 10px;
+}
