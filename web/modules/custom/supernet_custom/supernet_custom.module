@@ -7,20 +7,18 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
+use Drupal\Component\Utility\Html;
+use \Drupal\node\Entity\Node;
 
 /**
  * Implements hook_views_pre_render().
  */
 function supernet_custom_views_pre_render(ViewExecutable $view){
   if ($view->id() == 'customer_billing_cycle' && $view->current_display == 'page_1') {
-
     foreach ($view->result as $i=> $value) {
       // Initial Join Date of customer
       $joining_date   = $value->_entity->get('field_internet_start_date')->value;
-      $joining_day    = date("d", strtotime('+1 month', strtotime($joining_date)));
-
-      // Plan Expired in current month
-      $current_day          = $joining_day. '-' . date('F'). '-' . date('Y');
+      $current_day = _get_due_date($joining_date);
 
       // Reminder of Plan Expired in current month
       $current_expired_date = date("d, F Y", strtotime($current_day));
@@ -72,5 +70,57 @@ function supernet_custom_preprocess_node(&$variables) {
   $variables['#attached']['library'][] = 'bartik/print-styling';
   $variables['payment_mode'] = $variables['content']['field_payment_mode'][0]['#markup'];
   //$variables['data_plan'] = $variables['content']['field_choose_data_plan'][0]['#markup'];
+}
 
+function _get_due_date($joining_date) {
+  // Get the Due date by Joining Date
+  $joining_day    = date("d", strtotime('+1 month', strtotime($joining_date)));
+  // Plan Expired in current month
+  $current_month_due_date  = $joining_day. '-' . date('F'). '-' . date('Y');
+  return $current_month_due_date;
+}
+
+/**
+ * Implements hook_cron().
+ *
+ * We implement hook_cron() to do "background" processing. It gets called every
+ * time the Drupal cron runs. We then decide what has to happen in response.
+ *
+ * In this example, we log a message after the time given in the state value
+ * 'cron_example.next_execution'. Then we update that variable to a time in the
+ * future.
+ */
+function supernet_custom_cron() {
+  $nids = \Drupal::entityQuery('node')->condition('status', 1)->condition('field_status', 1)->condition('type', 'customer')->execute();
+  foreach ($nids as $nid) {
+    $node = Node::load($nid);
+
+    //$node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    $internet_start_date = $node->get('field_internet_start_date')->getValue();
+    $internet_start_date = $internet_start_date[0]['value'];
+
+    $payment_status      = $node->get('field_payment_status')->getValue();
+    $payment_status      = $payment_status[0]['value'];
+
+    $internet_start_day  = date("d", strtotime('+1 month', strtotime($internet_start_date)));
+    // Plan Expired in current month
+    $current_month_due_date  = $internet_start_day. '-' . date('F'). '-' . date('Y');
+    $current_month_due_timestamp = strtotime($current_month_due_date);
+    $today_timestamp             = strtotime(date('d-F-Y', time()). '00:00:00');
+    $payment_date                = $node->get('field_payment_done_on_')->getValue();
+    $payment_date                = $payment_date[0]['value'];
+    $payment_date_month          = date("m", strtotime($payment_date));
+    $payment_date_year           = date("Y", strtotime($payment_date));
+
+    // Change the Payment status Only if Due date expired
+    // Don't Change the Payment status if Aniket manually updated for the current month
+    if ($today_timestamp > $current_month_due_timestamp) {
+      if($payment_status == 1 && date('m') != $payment_date_month) {
+        $node->set('field_payment_status', 0);
+        $node->save();
+      }
+    }
+  }
+  \Drupal::logger('supernet_custom')->notice('Supernet Custom ran');
+  \Drupal::logger('supernet_custom')->info("Runnning Cron every night minut log");
 }

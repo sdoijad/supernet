@@ -1746,6 +1746,58 @@
         "description": "Locked core dependencies; require this project INSTEAD OF drupal/core."
     },
     {
+        "name": "drupal/csv_serialization",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/csv_serialization.git",
+            "reference": "8.x-2.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/csv_serialization-8.x-2.0.zip",
+            "reference": "8.x-2.0",
+            "shasum": "3531383a6926a4ed761be56553997c2a937449ac"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9",
+            "league/csv": "^9.1"
+        },
+        "require-dev": {
+            "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+            "drupal/coder": "^8.3"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-2.0",
+                "datestamp": "1612801962",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Matthew Grasmick",
+                "homepage": "https://www.drupal.org/user/455714"
+            }
+        ],
+        "description": "Provides CSV as a serialization format.",
+        "homepage": "https://www.drupal.org/project/csv_serialization",
+        "support": {
+            "source": "http://cgit.drupalcode.org/csv_serialization",
+            "issues": "https://www.drupal.org/project/issues/csv_serialization"
+        }
+    },
+    {
         "name": "drupal/ctools",
         "version": "3.6.0",
         "version_normalized": "3.6.0.0",
@@ -1973,6 +2025,72 @@
         }
     },
     {
+        "name": "drupal/field_group",
+        "version": "3.1.0",
+        "version_normalized": "3.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/field_group.git",
+            "reference": "8.x-3.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.1.zip",
+            "reference": "8.x-3.1",
+            "shasum": "8a719eaea594f0ba874172831cb28da93c66b77a"
+        },
+        "require": {
+            "drupal/core": "^8.8 || ^9"
+        },
+        "require-dev": {
+            "drupal/jquery_ui_accordion": "^1.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-3.1",
+                "datestamp": "1591772567",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Hydra",
+                "homepage": "https://www.drupal.org/user/647364"
+            },
+            {
+                "name": "Stalski",
+                "homepage": "https://www.drupal.org/user/322618"
+            },
+            {
+                "name": "jyve",
+                "homepage": "https://www.drupal.org/user/591438"
+            },
+            {
+                "name": "nils.destoop",
+                "homepage": "https://www.drupal.org/user/361625"
+            },
+            {
+                "name": "swentel",
+                "homepage": "https://www.drupal.org/user/107403"
+            }
+        ],
+        "description": "Provides the field_group module.",
+        "homepage": "https://www.drupal.org/project/field_group",
+        "support": {
+            "source": "https://git.drupalcode.org/project/field_group",
+            "issues": "https://www.drupal.org/project/issues/field_group"
+        }
+    },
+    {
         "name": "drupal/layout_builder_blocks",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -2162,6 +2280,56 @@
         "homepage": "https://www.drupal.org/project/media_library_theme_reset",
         "support": {
             "source": "https://git.drupalcode.org/project/media_library_theme_reset"
+        }
+    },
+    {
+        "name": "drupal/multiple_fields_remove_button",
+        "version": "1.0.0-alpha13",
+        "version_normalized": "1.0.0.0-alpha13",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/multiple_fields_remove_button.git",
+            "reference": "8.x-1.0-alpha13"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/multiple_fields_remove_button-8.x-1.0-alpha13.zip",
+            "reference": "8.x-1.0-alpha13",
+            "shasum": "d7171a7c1cba940320c271432f8e7c432a539989"
+        },
+        "require": {
+            "drupal/core": "^8 || ^9"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-1.0-alpha13",
+                "datestamp": "1590964821",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Alpha releases are not covered by Drupal security advisories."
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "asghar",
+                "homepage": "https://www.drupal.org/user/415797"
+            },
+            {
+                "name": "semjuel",
+                "homepage": "https://www.drupal.org/user/2426534"
+            }
+        ],
+        "description": "Add remove button for multi showing fields.",
+        "homepage": "https://www.drupal.org/project/multiple_fields_remove_button",
+        "support": {
+            "source": "https://git.drupalcode.org/project/multiple_fields_remove_button"
         }
     },
     {
@@ -2391,6 +2559,77 @@
         }
     },
     {
+        "name": "drupal/ultimate_cron",
+        "version": "2.0.0-alpha5",
+        "version_normalized": "2.0.0.0-alpha5",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/ultimate_cron.git",
+            "reference": "8.x-2.0-alpha5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/ultimate_cron-8.x-2.0-alpha5.zip",
+            "reference": "8.x-2.0-alpha5",
+            "shasum": "0f10464fff29eca89024e7afa5b6d8d07bd52f75"
+        },
+        "require": {
+            "drupal/core": "^8.7.7 || ^9"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-2.0-alpha5",
+                "datestamp": "1600928948",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Alpha releases are not covered by Drupal security advisories."
+                }
+            },
+            "drush": {
+                "services": {
+                    "drush.services.yml": "^9 || ^10"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Berdir",
+                "homepage": "https://www.drupal.org/user/214652"
+            },
+            {
+                "name": "Dane Powell",
+                "homepage": "https://www.drupal.org/user/339326"
+            },
+            {
+                "name": "Primsi",
+                "homepage": "https://www.drupal.org/user/282629"
+            },
+            {
+                "name": "arnested",
+                "homepage": "https://www.drupal.org/user/245635"
+            },
+            {
+                "name": "gielfeldt",
+                "homepage": "https://www.drupal.org/user/366993"
+            },
+            {
+                "name": "miro_dietiker",
+                "homepage": "https://www.drupal.org/user/227761"
+            }
+        ],
+        "description": "Ultimate cron",
+        "homepage": "https://www.drupal.org/project/ultimate_cron",
+        "support": {
+            "source": "https://git.drupalcode.org/project/ultimate_cron"
+        }
+    },
+    {
         "name": "drupal/views_bulk_operations",
         "version": "3.13.0",
         "version_normalized": "3.13.0.0",
@@ -2463,6 +2702,77 @@
             "source": "https://git.drupalcode.org/project/views_bulk_operations/-/tree/8.x-3.x",
             "issues": "https://www.drupal.org/project/issues/views_bulk_operations?version=8.x",
             "docs": "https://www.drupal.org/docs/8/modules/views-bulk-operations-vbo"
+        }
+    },
+    {
+        "name": "drupal/views_data_export",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/views_data_export.git",
+            "reference": "8.x-1.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/views_data_export-8.x-1.0.zip",
+            "reference": "8.x-1.0",
+            "shasum": "f1d16fd06ee7574f680e30f6bf5d6a152e3e9f42"
+        },
+        "require": {
+            "drupal/core": "^8.8 || ^9",
+            "drupal/csv_serialization": "~1.4 || ~2.0"
+        },
+        "require-dev": {
+            "drupal/search_api": "~1.12",
+            "drupal/xls_serialization": "~1.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "drupal": {
+                "version": "8.x-1.0",
+                "datestamp": "1592589996",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Steven Jones",
+                "homepage": "https://www.drupal.org/user/99644"
+            },
+            {
+                "name": "amoebanath",
+                "homepage": "https://www.drupal.org/user/2810799"
+            },
+            {
+                "name": "james.williams",
+                "homepage": "https://www.drupal.org/user/592268"
+            },
+            {
+                "name": "jamsilver",
+                "homepage": "https://www.drupal.org/user/476732"
+            },
+            {
+                "name": "jhedstrom",
+                "homepage": "https://www.drupal.org/user/208732"
+            },
+            {
+                "name": "nerdstein",
+                "homepage": "https://www.drupal.org/user/1557710"
+            }
+        ],
+        "description": "Plugin to export views data into various file formats.",
+        "homepage": "https://www.drupal.org/project/views_data_export",
+        "support": {
+            "source": "https://git.drupalcode.org/project/views_data_export"
         }
     },
     {
@@ -3306,6 +3616,86 @@
             {
                 "url": "https://funding.communitybridge.org/projects/laminas-project",
                 "type": "community_bridge"
+            }
+        ]
+    },
+    {
+        "name": "league/csv",
+        "version": "9.7.1",
+        "version_normalized": "9.7.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/csv.git",
+            "reference": "0ec57e8264ec92565974ead0d1724cf1026e10c1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/csv/zipball/0ec57e8264ec92565974ead0d1724cf1026e10c1",
+            "reference": "0ec57e8264ec92565974ead0d1724cf1026e10c1",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "php": "^7.3 || ^8.0"
+        },
+        "require-dev": {
+            "ext-curl": "*",
+            "ext-dom": "*",
+            "friendsofphp/php-cs-fixer": "^2.16",
+            "phpstan/phpstan": "^0.12.0",
+            "phpstan/phpstan-phpunit": "^0.12.0",
+            "phpstan/phpstan-strict-rules": "^0.12.0",
+            "phpunit/phpunit": "^9.5"
+        },
+        "suggest": {
+            "ext-dom": "Required to use the XMLConverter and or the HTMLConverter classes",
+            "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
+        },
+        "time": "2021-04-17T16:32:08+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "9.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\Csv\\": "src"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ignace Nyamagana Butera",
+                "email": "nyamsprod@gmail.com",
+                "homepage": "https://github.com/nyamsprod/",
+                "role": "Developer"
+            }
+        ],
+        "description": "CSV data manipulation made easy in PHP",
+        "homepage": "http://csv.thephpleague.com",
+        "keywords": [
+            "convert",
+            "csv",
+            "export",
+            "filter",
+            "import",
+            "read",
+            "transform",
+            "write"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/sponsors/nyamsprod",
+                "type": "github"
             }
         ]
     },

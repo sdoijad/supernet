@@ -1,0 +1,5 @@
+services:
+  supernet_custom.event_subscriber:
+    class: Drupal\supernet_custom\EventSubscriber\HookInitEventSubscriber
+    tags:
+      - { name: event_subscriber }

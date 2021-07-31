@@ -70,11 +70,11 @@
 {% set current_date  =  'now'|date('d, F Y')  %}
 {% set joining_date  =  node.field_internet_start_date.value %}
 {% set joining_day   =  joining_date|date_modify("+1 month")|date("d") %}
-{% set current_month =  'now'|date('F') %}
-{% set next_month    =  'now'|date_modify("+1 month")|date("F") %}
+{% set current_month =  'now'|date('m') %}
+{% set next_month    =  'now'|date_modify("+1 month")|date("m") %}
 {% set current_year  =  'now'|date('Y') %}
-{% set from_date     =  joining_day ~ ', ' ~ current_month ~ ' ' ~ current_year %}
-{% set to_date       =  joining_day ~ ', ' ~ next_month ~ ' ' ~ current_year %}
+{% set from_date     =  joining_day ~ '/' ~ current_month ~ '/' ~ current_year %}
+{% set to_date       =  joining_day ~ '/' ~ next_month ~ '/' ~ current_year %}
 
 
 <!-- set the Plan Type as Limited or Un-Limited -->
@@ -105,7 +105,6 @@
     <main>
         <div class="row">
             <div class="col-sm-5"><strong>Date:</strong> {{ current_date }} </div>
-            <div class="col-sm-6 text-sm-right"> <strong>Invoice No:</strong>16835</div>
 
         </div>
         <hr>
@@ -139,9 +138,9 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="col-3 border-0">{{ node.field_choose_data_plan.entity.field_plan_data.value }} GB, {{ plan_type_label }}</td>
+                            <td class="col-3 border-0">{{ node.field_choose_data_plan.entity.field_plan_data.value }} Mbps, {{ plan_type_label }}</td>
                             <td class="col-4 border-0">
-                                 {{ from_date }} - {{ to_date }}
+                                {{ from_date }} - {{ to_date }}
                             </td>
                             <td class="col-2 text-center border-0">{{ payment_mode }} </td>
                             <td class="col-1 text-center border-0"> <img class="currency" src="/sites/default/files/rupees.png" /> {{ node.field_choose_data_plan.entity.field_plan_price.value|number_format(2) }} </td>
